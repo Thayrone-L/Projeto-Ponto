@@ -19,33 +19,37 @@ import javax.swing.JOptionPane;
  */
 public class Funcionario {
 
+    private Date admissao;
+    private Date afast_data_fim;
+    private Date afast_data_ini;
+    private String afast_motivo;
+    private String bairro;
+    private boolean banco;
+    private int banco_id;
+    private String cat_cnh;
+    private String cep;
+    private String cidade;
+    private String cnh;
+    private String cpf;
+    private Date demissao;
+    private String departamento;
+    private boolean digital;
+    private String email;
+    private int empresa_id;
+    private String endereco;
+    private String estado;
+    private int folha;
+    private String funcao;
     private int id;
+    private int id_horario;
+    private Date nascimento;
     private String nome;
     private String pis;
-    private int folha;
-    private int empresa_id;
-    private int id_horario;
-    private Date admissao;
-    private Date demissao;
-    private String funcao;
-    private String departamento;
-    private String endereco;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private String cep;
     private String telefone;
-    private String email;
-    private String cpf;
-    private String cnh;
-    private String cat_cnh;
-    private Date nascimento;
-    private boolean banco;
-    private Date afastamentos;
     private boolean web;
-    private String web_senha;
     private String web_email;
     private String web_nivel;
+    private String web_senha;
 
     public int contarIdFuncionario() {
 
@@ -115,15 +119,13 @@ public class Funcionario {
             rs = stm.executeQuery(selectSql);
             while (rs.next()) {
                 Funcionario func = new Funcionario();
-                func.setId(rs.getInt("id"));
-                func.setNome(rs.getString("nome"));
-                func.setFolha(Integer.parseInt(rs.getString("n_folha")));
-                func.setPis(rs.getString("n_pis"));
-                func.setEmpresa_id(rs.getInt("empresa_id"));
-                func.setAdmissao(admissao);
-                func.setAfastamentos(afastamentos);
-                func.setBairro(bairro);
-                func.setBanco(banco);
+
+                func.setAdmissao(rs.getDate("admissao"));
+                func.setAfast_data_fim(rs.getDate("afast_data_fim"));
+                func.setAfast_data_ini(rs.getDate("afast_data_ini"));
+                func.setAfast_motivo(rs.getNString("afast_motivo"));
+                func.setBairro(rs.getNString("bairro"));
+                func.setBanco(rs.getBoolean("banco"));
                 func.setCat_cnh(cat_cnh);
                 func.setCep(cep);
                 func.setCidade(cidade);
@@ -131,12 +133,23 @@ public class Funcionario {
                 func.setCpf(cpf);
                 func.setDemissao(demissao);
                 func.setDepartamento(departamento);
+                func.setDigital(digital);
                 func.setEmail(email);
+                func.setEmpresa_id(rs.getInt("empresa_id"));
                 func.setEndereco(endereco);
                 func.setEstado(estado);
+                func.setFolha(Integer.parseInt(rs.getString("n_folha")));
                 func.setFuncao(funcao);
+                func.setId(rs.getInt("id"));
                 func.setId_horario(id_horario);
                 func.setNascimento(nascimento);
+                func.setNome(rs.getString("nome"));
+                func.setPis(rs.getString("n_pis"));
+                func.setTelefone(telefone);
+                func.setWeb(web);
+                func.setWeb_email(web_email);
+                func.setWeb_nivel(web_nivel);
+                func.setWeb_senha(web_senha);
                 ArrayFuncionario.add(func);
             }
 
@@ -150,12 +163,198 @@ public class Funcionario {
 
     }
 
+    public Date getAdmissao() {
+        return admissao;
+    }
+
+    public void setAdmissao(Date admissao) {
+        this.admissao = admissao;
+    }
+
+    public Date getAfast_data_fim() {
+        return afast_data_fim;
+    }
+
+    public void setAfast_data_fim(Date afast_data_fim) {
+        this.afast_data_fim = afast_data_fim;
+    }
+
+    public Date getAfast_data_ini() {
+        return afast_data_ini;
+    }
+
+    public void setAfast_data_ini(Date afast_data_ini) {
+        this.afast_data_ini = afast_data_ini;
+    }
+
+    public String getAfast_motivo() {
+        return afast_motivo;
+    }
+
+    public void setAfast_motivo(String afast_motivo) {
+        this.afast_motivo = afast_motivo;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public boolean isBanco() {
+        return banco;
+    }
+
+    public void setBanco(boolean banco) {
+        this.banco = banco;
+    }
+
+    public int getBanco_id() {
+        return banco_id;
+    }
+
+    public void setBanco_id(int banco_id) {
+        this.banco_id = banco_id;
+    }
+    
+    
+
+    public String getCat_cnh() {
+        return cat_cnh;
+    }
+
+    public void setCat_cnh(String cat_cnh) {
+        this.cat_cnh = cat_cnh;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getCnh() {
+        return cnh;
+    }
+
+    public void setCnh(String cnh) {
+        this.cnh = cnh;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getDemissao() {
+        return demissao;
+    }
+
+    public void setDemissao(Date demissao) {
+        this.demissao = demissao;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public boolean isDigital() {
+        return digital;
+    }
+
+    public void setDigital(boolean digital) {
+        this.digital = digital;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getEmpresa_id() {
+        return empresa_id;
+    }
+
+    public void setEmpresa_id(int empresa_id) {
+        this.empresa_id = empresa_id;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public int getFolha() {
+        return folha;
+    }
+
+    public void setFolha(int folha) {
+        this.folha = folha;
+    }
+
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getId_horario() {
+        return id_horario;
+    }
+
+    public void setId_horario(int id_horario) {
+        this.id_horario = id_horario;
+    }
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
     }
 
     public String getNome() {
@@ -174,102 +373,6 @@ public class Funcionario {
         this.pis = pis;
     }
 
-    public int getFolha() {
-        return folha;
-    }
-
-    public void setFolha(int folha) {
-        this.folha = folha;
-    }
-
-    public int getId_empresa() {
-        return empresa_id;
-    }
-
-    public void setEmpresa_id(int empresa_id) {
-        this.empresa_id = empresa_id;
-    }
-
-    public int getId_horario() {
-        return id_horario;
-    }
-
-    public void setId_horario(int id_horario) {
-        this.id_horario = id_horario;
-    }
-
-    public Date getAdmissao() {
-        return admissao;
-    }
-
-    public void setAdmissao(Date admissao) {
-        this.admissao = admissao;
-    }
-
-    public Date getDemissao() {
-        return demissao;
-    }
-
-    public void setDemissao(Date demissao) {
-        this.demissao = demissao;
-    }
-
-    public String getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
     public String getTelefone() {
         return telefone;
     }
@@ -278,76 +381,12 @@ public class Funcionario {
         this.telefone = telefone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getCnh() {
-        return cnh;
-    }
-
-    public void setCnh(String cnh) {
-        this.cnh = cnh;
-    }
-
-    public String getCat_cnh() {
-        return cat_cnh;
-    }
-
-    public void setCat_cnh(String cat_cnh) {
-        this.cat_cnh = cat_cnh;
-    }
-
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public boolean usaBanco() {
-        return banco;
-    }
-
-    public void setBanco(boolean banco) {
-        this.banco = banco;
-    }
-
-    public Date getAfastamentos() {
-        return afastamentos;
-    }
-
-    public void setAfastamentos(Date afastamentos) {
-        this.afastamentos = afastamentos;
-    }
-
-    public boolean usaWeb() {
+    public boolean isWeb() {
         return web;
     }
 
     public void setWeb(boolean web) {
         this.web = web;
-    }
-
-    public String getWeb_senha() {
-        return web_senha;
-    }
-
-    public void setWeb_senha(String web_senha) {
-        this.web_senha = web_senha;
     }
 
     public String getWeb_email() {
@@ -364,6 +403,14 @@ public class Funcionario {
 
     public void setWeb_nivel(String web_nivel) {
         this.web_nivel = web_nivel;
+    }
+
+    public String getWeb_senha() {
+        return web_senha;
+    }
+
+    public void setWeb_senha(String web_senha) {
+        this.web_senha = web_senha;
     }
 
 }

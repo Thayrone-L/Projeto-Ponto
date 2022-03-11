@@ -4,15 +4,10 @@
  */
 package com.dados;
 
-import com.Classes.Funcionario;
 import static com.dados.conectaBanco.FecharConexao;
 import static com.dados.conectaBanco.getConexaoMySQL;
-
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
