@@ -29,7 +29,7 @@ public class Funcionario {
     private String cat_cnh;
     private String cep;
     private String cidade;
-    private String cnh;
+    private int cnh;
     private String cpf;
     private Date demissao;
     private String departamento;
@@ -89,10 +89,37 @@ public class Funcionario {
             rs = stm.executeQuery(selectSql);
             while (rs.next()) {
                 Funcionario func = new Funcionario();
-                func.setId(rs.getInt("id"));
-                func.setNome(rs.getString("nome"));
+                func.setAdmissao(rs.getDate("admissao"));
+                func.setAfast_data_fim(rs.getDate("afast_data_fim"));
+                func.setAfast_data_ini(rs.getDate("afast_data_ini"));
+                func.setAfast_motivo(rs.getNString("afast_motivo"));
+                func.setBairro(rs.getString("bairro"));
+                func.setBanco(rs.getBoolean("banco"));
+                func.setBanco_id(rs.getInt("banco_id"));
+                func.setCat_cnh(rs.getString("cat_cnh"));
+                func.setCep(rs.getString("cep"));
+                func.setCidade(rs.getString("cidade"));
+                func.setCnh(rs.getInt("cnh"));
+                func.setCpf(rs.getString("cpf"));
+                func.setDemissao(rs.getDate("demissao"));
+                func.setDepartamento(rs.getString("departamento_id"));
+                func.setDigital(rs.getBoolean("digital"));
+                func.setEmail(rs.getString("email"));
+                func.setEmpresa_id(rs.getInt("empresa_id"));
+                func.setEndereco(rs.getString("endereco"));
+                func.setEstado(rs.getString("estado"));
                 func.setFolha(Integer.parseInt(rs.getString("n_folha")));
+                func.setFuncao(rs.getString("funcao_id"));
+                func.setId(rs.getInt("id"));
+                func.setId_horario(rs.getInt("id_horario"));
+                func.setNascimento(rs.getDate("nascimento"));
+                func.setNome(rs.getString("nome"));
                 func.setPis(rs.getString("n_pis"));
+                func.setTelefone(rs.getNString("telefone"));
+                func.setWeb(rs.getBoolean("web"));
+                func.setWeb_email(rs.getString("web_email"));
+                func.setWeb_nivel(rs.getString("web_nivel"));
+                func.setWeb_senha(rs.getString("web_senha"));
 
                 ArrayFuncionario.add(func);
             }
@@ -126,30 +153,31 @@ public class Funcionario {
                 func.setAfast_motivo(rs.getNString("afast_motivo"));
                 func.setBairro(rs.getNString("bairro"));
                 func.setBanco(rs.getBoolean("banco"));
-                func.setCat_cnh(cat_cnh);
-                func.setCep(cep);
-                func.setCidade(cidade);
-                func.setCnh(cnh);
-                func.setCpf(cpf);
-                func.setDemissao(demissao);
-                func.setDepartamento(departamento);
-                func.setDigital(digital);
-                func.setEmail(email);
+                func.setBanco_id(rs.getInt("banco_id"));
+                func.setCat_cnh(rs.getNString("cat_cnh"));
+                func.setCep(rs.getNString("cep"));
+                func.setCidade(rs.getNString("cidade"));
+                func.setCnh(rs.getInt("cnh"));
+                func.setCpf(rs.getNString("cpf"));
+                func.setDemissao(rs.getDate("demissao"));
+                func.setDepartamento(rs.getNString("departamento"));
+                func.setDigital(rs.getBoolean("digital"));
+                func.setEmail(rs.getNString("email"));
                 func.setEmpresa_id(rs.getInt("empresa_id"));
-                func.setEndereco(endereco);
-                func.setEstado(estado);
+                func.setEndereco(rs.getNString("endereco"));
+                func.setEstado(rs.getNString("estado"));
                 func.setFolha(Integer.parseInt(rs.getString("n_folha")));
-                func.setFuncao(funcao);
+                func.setFuncao(rs.getNString("funcao"));
                 func.setId(rs.getInt("id"));
-                func.setId_horario(id_horario);
-                func.setNascimento(nascimento);
+                func.setId_horario(rs.getInt("id_horario"));
+                func.setNascimento(rs.getDate("nascimento"));
                 func.setNome(rs.getString("nome"));
                 func.setPis(rs.getString("n_pis"));
-                func.setTelefone(telefone);
-                func.setWeb(web);
-                func.setWeb_email(web_email);
-                func.setWeb_nivel(web_nivel);
-                func.setWeb_senha(web_senha);
+                func.setTelefone(rs.getNString("telefone"));
+                func.setWeb(rs.getBoolean("web"));
+                func.setWeb_email(rs.getNString("web_email"));
+                func.setWeb_nivel(rs.getNString("web_nivel"));
+                func.setWeb_senha(rs.getNString("web_senha"));
                 ArrayFuncionario.add(func);
             }
 
@@ -160,6 +188,44 @@ public class Funcionario {
             e.printStackTrace();
         }
         FecharConexao();
+
+    }
+
+    public void imprimirFuncionario() {
+
+        System.out.println(""
+                + " / " + this.getAdmissao()
+                + " / " + this.getAfast_data_fim()
+                + " / " + this.getAfast_data_ini()
+                + " / " + this.getAfast_motivo()
+                + " / " + this.getBairro()
+                + " / " + this.isBanco()
+                + " / " + this.getBanco_id()
+                + " / " + this.getCat_cnh()
+                + " / " + this.getCep()
+                + " / " + this.getCidade()
+                + " / " + this.getCnh()
+                + " / " + this.getCpf()
+                + " / " + this.getDemissao()
+                + " / " + this.getDepartamento()
+                + " / " + this.isDigital()
+                + " / " + this.getEmail()
+                + " / " + this.getEmpresa_id()
+                + " / " + this.getEndereco()
+                + " / " + this.getEstado()
+                + " / " + this.getFolha()
+                + " / " + this.getFuncao()
+                + " / " + this.getId()
+                + " / " + this.getId_horario()
+                + " / " + this.getNascimento()
+                + " / " + this.getNome()
+                + " / " + this.getPis()
+                + " / " + this.getTelefone()
+                + " / " + this.isWeb()
+                + " / " + this.getWeb_email()
+                + " / " + this.getWeb_nivel()
+                + " / " + this.getWeb_senha()
+        );
 
     }
 
@@ -218,8 +284,6 @@ public class Funcionario {
     public void setBanco_id(int banco_id) {
         this.banco_id = banco_id;
     }
-    
-    
 
     public String getCat_cnh() {
         return cat_cnh;
@@ -245,11 +309,11 @@ public class Funcionario {
         this.cidade = cidade;
     }
 
-    public String getCnh() {
+    public int getCnh() {
         return cnh;
     }
 
-    public void setCnh(String cnh) {
+    public void setCnh(int cnh) {
         this.cnh = cnh;
     }
 

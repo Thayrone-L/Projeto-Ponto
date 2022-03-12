@@ -6,6 +6,7 @@ package com.telas;
 
 import com.Classes.Funcionario;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author thayrone
  */
 public class telaListaFuncionarios extends javax.swing.JFrame {
-
+public int id_Selecionado;
     /**
      * Creates new form telaListaFuncionarios
      */
@@ -88,6 +89,11 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
         btnIncluir.setText("Incluir");
         btnIncluir.setPreferredSize(new java.awt.Dimension(100, 22));
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +206,10 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
+        this.id_Selecionado =  Integer.parseInt(String.valueOf(this.getTabelaFuncionarios().getValueAt(this.getTabelaFuncionarios().getSelectedRow(), 0)));
+        System.out.println(this.id_Selecionado);
+         telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
+        telacad.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -211,6 +221,13 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
         telaListaDemitidos listaDemitidos = new telaListaDemitidos();
         listaDemitidos.setVisible(true);
     }//GEN-LAST:event_btnDemitidosActionPerformed
+
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+        // TODO add your handling code here:
+        
+        telaCadFuncionarios telacad = new telaCadFuncionarios(0);
+        telacad.setVisible(true);
+    }//GEN-LAST:event_btnIncluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,4 +276,14 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
     private javax.swing.JPanel painelTituloPagina;
     private javax.swing.JTable tabelaFuncionarios;
     // End of variables declaration//GEN-END:variables
+
+    public JTable getTabelaFuncionarios() {
+        return tabelaFuncionarios;
+    }
+
+    public void setTabelaFuncionarios(JTable tabelaFuncionarios) {
+        this.tabelaFuncionarios = tabelaFuncionarios;
+    }
+
+  
 }

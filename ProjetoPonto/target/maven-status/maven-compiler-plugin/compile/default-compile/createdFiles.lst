@@ -1,5 +1,6 @@
 com\TelaInicial$12.class
 com\dados\dadosConexao.class
+com\telas\telaListaFuncionarios$6.class
 com\telas\telaListaHorarios$2.class
 com\TelaInicial$6.class
 com\TelaInicial$3.class
@@ -9,6 +10,7 @@ com\telas\telaListaFuncionarios$3.class
 com\TelaInicial$13.class
 com\telas\telaListaFuncionarios.class
 com\TelaInicial$4.class
+com\telas\telaCadFuncionarios$7.class
 com\TelaInicial$7.class
 com\Classes\Funcionario.class
 com\TelaInicial.class

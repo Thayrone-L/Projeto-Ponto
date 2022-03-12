@@ -10,17 +10,34 @@ package com.telas;
  */
 public class telaCadFuncionarios extends javax.swing.JFrame {
 
+    public int id_recebido;
+   
+
     /**
      * Creates new form telaCadFuncionarios
      */
-    public telaCadFuncionarios() {
+    public telaCadFuncionarios(/*int id_funcionario*/) {
         setSize(800, 600);
         setResizable(false);
         setLocationRelativeTo(null);
+        //System.out.println(id_funcionario);
         initComponents();
-        
-    }
+        //id_recebido = id_funcionario;
+   }
 
+    
+   private void preenche(){
+   
+       if(id_recebido != 0){
+       
+       
+       
+       
+       }
+   
+   }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -697,7 +714,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new telaCadFuncionarios().setVisible(true);
+                new telaCadFuncionarios(/*0*/).setVisible(true);
             }
         });
     }

@@ -525,7 +525,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void cadFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFuncionariosActionPerformed
         // TODO add your handling code here:
-        telaCadFuncionarios cadFuncionarios = new telaCadFuncionarios();
+        telaCadFuncionarios cadFuncionarios = new telaCadFuncionarios(0);
         cadFuncionarios.setVisible(true);
     }//GEN-LAST:event_cadFuncionariosActionPerformed
 
