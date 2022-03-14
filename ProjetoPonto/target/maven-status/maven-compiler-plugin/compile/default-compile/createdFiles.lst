@@ -1,5 +1,7 @@
 com\TelaInicial$12.class
 com\dados\dadosConexao.class
+com\Classes\Departamento.class
+com\Classes\Empresa.class
 com\telas\telaListaFuncionarios$6.class
 com\telas\telaListaHorarios$2.class
 com\TelaInicial$6.class
@@ -8,8 +10,10 @@ com\telas\telaCadFuncionarios$3.class
 com\telas\telaCadFuncionarios$6.class
 com\telas\telaListaFuncionarios$3.class
 com\TelaInicial$13.class
+com\Classes\Funcao.class
 com\telas\telaListaFuncionarios.class
 com\TelaInicial$4.class
+com\Classes\Horario.class
 com\telas\telaCadFuncionarios$7.class
 com\TelaInicial$7.class
 com\Classes\Funcionario.class
@@ -20,6 +24,7 @@ com\telas\telaListaDemitidos.class
 com\TelaInicial$1.class
 com\telas\telaCadFuncionarios$4.class
 com\telas\telaListaFuncionarios$4.class
+com\telas\telaCadFuncionarios$8.class
 com\telas\telaCadFuncionarios$1.class
 com\TelaInicial$10.class
 com\telas\telaListaFuncionarios$1.class

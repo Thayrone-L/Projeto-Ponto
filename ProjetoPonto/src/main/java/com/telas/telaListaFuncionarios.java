@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author thayrone
  */
 public class telaListaFuncionarios extends javax.swing.JFrame {
-public int id_Selecionado;
+
     /**
      * Creates new form telaListaFuncionarios
      */
@@ -162,6 +162,7 @@ public int id_Selecionado;
                 return canEdit [columnIndex];
             }
         });
+        tabelaFuncionarios.setRowSelectionAllowed(true);
         pTabela.setViewportView(tabelaFuncionarios);
         if (tabelaFuncionarios.getColumnModel().getColumnCount() > 0) {
             tabelaFuncionarios.getColumnModel().getColumn(0).setMinWidth(30);
@@ -206,9 +207,10 @@ public int id_Selecionado;
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
-        this.id_Selecionado =  Integer.parseInt(String.valueOf(this.getTabelaFuncionarios().getValueAt(this.getTabelaFuncionarios().getSelectedRow(), 0)));
-        System.out.println(this.id_Selecionado);
-         telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
+        DefaultTableModel modelo = (DefaultTableModel) tabelaFuncionarios.getModel();
+        int id_Selecionado= (int) modelo.getValueAt(this.getTabelaFuncionarios().getSelectedRow(), NORMAL);
+        System.out.println("O id selecionado foi" +id_Selecionado );  
+        telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
         telacad.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 

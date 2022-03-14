@@ -1,6 +1,10 @@
 package com;
 
+import com.Classes.Departamento;
+import com.Classes.Empresa;
+import com.Classes.Funcao;
 import com.Classes.Funcionario;
+import com.Classes.Horario;
 import com.dados.comandosBanco;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.telas.telaCadFuncionarios;
@@ -28,6 +32,11 @@ public class TelaInicial extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
 
+        Empresa.listarEmpresas();
+        Horario.listarHorarios();
+        Departamento.listarDepartamentos();
+        Funcao.listarFuncoes();
+        
     }
 
     public void atualizaPainel() {

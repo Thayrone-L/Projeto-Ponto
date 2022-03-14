@@ -51,6 +51,21 @@ public class Funcionario {
     private String web_nivel;
     private String web_senha;
 
+      public static int localizaIdex(int id_funcionario) {
+        int index = 0;
+        for (int i = 0; i < ArrayFuncionario.size(); i++) {
+            if (ArrayFuncionario.get(i).getId() == id_funcionario) {
+                System.out.println(ArrayFuncionario.get(i).getId());
+                index = i;
+                return index;
+            }
+
+            
+        }
+        return 0;
+
+    }
+
     public int contarIdFuncionario() {
 
         ResultSet rs = null;
@@ -75,7 +90,7 @@ public class Funcionario {
 
     }
 
-    public ArrayList<Funcionario> ArrayFuncionario = new ArrayList<>();
+    public static ArrayList<Funcionario> ArrayFuncionario = new ArrayList<>();
 
     public void listarFuncionarios() {
 

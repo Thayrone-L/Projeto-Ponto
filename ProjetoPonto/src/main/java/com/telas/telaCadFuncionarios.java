@@ -4,6 +4,15 @@
  */
 package com.telas;
 
+import com.Classes.Departamento;
+import com.Classes.Empresa;
+import com.Classes.Funcao;
+import com.Classes.Funcionario;
+import com.Classes.Horario;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author thayrone
@@ -11,33 +20,82 @@ package com.telas;
 public class telaCadFuncionarios extends javax.swing.JFrame {
 
     public int id_recebido;
-   
 
     /**
      * Creates new form telaCadFuncionarios
      */
-    public telaCadFuncionarios(/*int id_funcionario*/) {
+    public telaCadFuncionarios(int id_funcionario) {
         setSize(800, 600);
         setResizable(false);
         setLocationRelativeTo(null);
-        //System.out.println(id_funcionario);
+        System.out.println("O id recebido foi: " + id_funcionario);
         initComponents();
-        //id_recebido = id_funcionario;
-   }
+        id_recebido = id_funcionario;
+        preencheComboEmpresa();
+        preencheComboHorario();
+        preenche();
 
-    
-   private void preenche(){
-   
-       if(id_recebido != 0){
-       
-       
-       
-       
-       }
-   
-   }
-    
-    
+    }
+
+    private void preenche() {
+
+        if (id_recebido != 0) {
+
+            int index = Funcionario.localizaIdex(id_recebido);
+            System.out.println("O index localizado foi: " + index);
+            tbNome.setText(Funcionario.ArrayFuncionario.get(index).getNome());
+            tbFolha.setText(Integer.toString(Funcionario.ArrayFuncionario.get(index).getFolha()));
+            tbPis.setText(Funcionario.ArrayFuncionario.get(index).getPis());
+            int empresaID = Funcionario.ArrayFuncionario.get(index).getEmpresa_id();
+            int indexEmpresa = empresaID - 1;
+            cbEmpresa.setSelectedIndex(indexEmpresa);
+            int HorarioID = Funcionario.ArrayFuncionario.get(index).getId_horario();
+            int indexHorario = HorarioID - 1;
+            cbHorario.setSelectedIndex(indexHorario);
+            
+            int FuncaoID = Integer.parseInt(Funcionario.ArrayFuncionario.get(index).getFuncao());
+            int indexFuncao = Funcao.localizaIdex(FuncaoID);
+            cbFuncao.setSelectedIndex(indexFuncao);
+
+            int DepartamentoID = Integer.parseInt(Funcionario.ArrayFuncionario.get(index).getDepartamento());
+            int indexDepartamento = Departamento.localizaIdex(DepartamentoID);
+            cbDepartamento.setSelectedIndex(indexDepartamento);
+
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String AdmissaoFormatada = dateFormat.format(Funcionario.ArrayFuncionario.get(index).getAdmissao());
+            tbAdmissao.setText(AdmissaoFormatada);
+            if (Funcionario.ArrayFuncionario.get(index).getDemissao() != null) {
+                String DemissaoFormatada = dateFormat.format(Funcionario.ArrayFuncionario.get(index).getDemissao());
+                tbDemissao.setText(DemissaoFormatada);
+            }
+        }
+
+    }
+
+    private void preencheComboEmpresa() {
+
+        DefaultComboBoxModel modeloCEmpresa = new DefaultComboBoxModel(Empresa.ArrayNomesEmpresa.toArray());
+        cbEmpresa.setModel(modeloCEmpresa);
+    }
+
+    private void preencheComboHorario() {
+
+        DefaultComboBoxModel modeloCHorario = new DefaultComboBoxModel(Horario.ArrayNomesHorario.toArray());
+        cbHorario.setModel(modeloCHorario);
+    }
+
+    private void preencheComboDepartamento() {
+
+        DefaultComboBoxModel modeloCDepartamento = new DefaultComboBoxModel(Departamento.ArrayNomesDepartamento.toArray());
+        cbDepartamento.setModel(modeloCDepartamento);
+    }
+
+    private void preencheComboFuncao() {
+
+        DefaultComboBoxModel modeloCFuncao = new DefaultComboBoxModel(Funcao.ArrayNomesFuncao.toArray());
+        cbFuncao.setModel(modeloCFuncao);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,12 +124,12 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
         lblEmpresa = new javax.swing.JLabel();
         cbEmpresa = new javax.swing.JComboBox<>();
         cbHorario = new javax.swing.JComboBox<>();
-        tbFuncao = new javax.swing.JTextField();
-        tbDepartamento = new javax.swing.JTextField();
         lblAdmissao = new javax.swing.JLabel();
         lblDemissao = new javax.swing.JLabel();
         tbAdmissao = new javax.swing.JFormattedTextField();
         tbDemissao = new javax.swing.JFormattedTextField();
+        cbFuncao = new javax.swing.JComboBox<>();
+        cbDepartamento = new javax.swing.JComboBox<>();
         tabAdicionais = new javax.swing.JPanel();
         lblEndereco = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
@@ -266,6 +324,17 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
         lblDemissao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDemissao.setText("Demissão");
 
+        tbAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+
+        cbFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbFuncao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFuncaoActionPerformed(evt);
+            }
+        });
+
+        cbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout tabPrincipalLayout = new javax.swing.GroupLayout(tabPrincipal);
         tabPrincipal.setLayout(tabPrincipalLayout);
         tabPrincipalLayout.setHorizontalGroup(
@@ -280,16 +349,15 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
                     .addComponent(lblFuncao)
                     .addComponent(lblDepartamento))
                 .addGap(30, 30, 30)
-                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cbHorario, 0, 414, Short.MAX_VALUE)
-                        .addComponent(cbEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tbDepartamento, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tbFuncao, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbHorario, javax.swing.GroupLayout.Alignment.TRAILING, 0, 414, Short.MAX_VALUE)
+                    .addComponent(cbEmpresa, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(tbDemissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                        .addComponent(tbAdmissao, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap())
+                        .addComponent(tbAdmissao, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(cbFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbDepartamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         tabPrincipalLayout.setVerticalGroup(
             tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,11 +373,11 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFuncao)
-                    .addComponent(tbFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDepartamento)
-                    .addComponent(tbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdmissao)
@@ -684,6 +752,10 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirAfastamentoActionPerformed
 
+    private void cbFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFuncaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFuncaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -714,7 +786,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new telaCadFuncionarios(/*0*/).setVisible(true);
+                new telaCadFuncionarios(0).setVisible(true);
             }
         });
     }
@@ -729,8 +801,10 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbCopiar;
     private javax.swing.JComboBox<String> cbCredito;
     private javax.swing.JComboBox<String> cbDebito;
+    private javax.swing.JComboBox<String> cbDepartamento;
     private javax.swing.JComboBox<String> cbEmpresa;
     private javax.swing.JComboBox<String> cbEstado;
+    private javax.swing.JComboBox<String> cbFuncao;
     private javax.swing.JComboBox<String> cbHorario;
     private javax.swing.JComboBox<String> cbNivelWeb;
     private javax.swing.JCheckBox checkCopiar;
@@ -787,11 +861,9 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField tbDataFim;
     private javax.swing.JFormattedTextField tbDataInicio;
     private javax.swing.JFormattedTextField tbDemissao;
-    private javax.swing.JTextField tbDepartamento;
     private javax.swing.JTextField tbEmail;
     private javax.swing.JTextField tbEndereco;
     private javax.swing.JTextField tbFolha;
-    private javax.swing.JTextField tbFuncao;
     private javax.swing.JFormattedTextField tbNascimento;
     private javax.swing.JTextField tbNome;
     private javax.swing.JTextField tbPis;
