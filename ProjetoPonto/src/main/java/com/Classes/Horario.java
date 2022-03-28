@@ -26,7 +26,20 @@ public class Horario {
     public static ArrayList<Horario> ArrayHorario = new ArrayList<>(); 
     public static List<String> ArrayNomesHorario = new ArrayList<String>(); 
     
-  
+    public static int localizaIndexHorario(int id_horario) {
+        int i = 0;
+        int index = 0;
+        for (Horario hor : ArrayHorario) {
+            if (hor.id == id_horario) {
+
+                 index=i;
+            }
+
+            i++;
+        }
+
+        return index;
+    }
    
     public static void listarHorarios() {
 

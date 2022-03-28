@@ -5,6 +5,7 @@
 package com.telas;
 
 import com.Classes.Funcionario;
+import static com.Classes.Funcionario.ArrayFuncionario;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class telaListaFuncionarios extends javax.swing.JFrame {
 
+    public int click = 0;
+
     /**
      * Creates new form telaListaFuncionarios
      */
@@ -24,6 +27,7 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         initComponents();
         preencheTabela();
+        
     }
 
     public void preencheTabela() {
@@ -143,6 +147,12 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
+        pTabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pTabelaMouseClicked(evt);
+            }
+        });
+
         tabelaFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -162,7 +172,11 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelaFuncionarios.setRowSelectionAllowed(true);
+        tabelaFuncionarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaFuncionariosMouseClicked(evt);
+            }
+        });
         pTabela.setViewportView(tabelaFuncionarios);
         if (tabelaFuncionarios.getColumnModel().getColumnCount() > 0) {
             tabelaFuncionarios.getColumnModel().getColumn(0).setMinWidth(30);
@@ -208,8 +222,8 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) tabelaFuncionarios.getModel();
-        int id_Selecionado= (int) modelo.getValueAt(this.getTabelaFuncionarios().getSelectedRow(), NORMAL);
-        System.out.println("O id selecionado foi" +id_Selecionado );  
+        int id_Selecionado = (int) modelo.getValueAt(this.getTabelaFuncionarios().getSelectedRow(), NORMAL);
+
         telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
         telacad.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
@@ -226,10 +240,32 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
         // TODO add your handling code here:
-        
+
         telaCadFuncionarios telacad = new telaCadFuncionarios(0);
         telacad.setVisible(true);
     }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void pTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pTabelaMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_pTabelaMouseClicked
+
+    private void tabelaFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFuncionariosMouseClicked
+        // TODO add your handling code here:
+        if (click < 1) {
+
+            click++;
+
+        } else {
+
+            DefaultTableModel modelo = (DefaultTableModel) tabelaFuncionarios.getModel();
+            int id_Selecionado = (int) modelo.getValueAt(this.getTabelaFuncionarios().getSelectedRow(), NORMAL);
+            telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
+            telacad.setVisible(true);
+            click = 0;
+
+        }
+    }//GEN-LAST:event_tabelaFuncionariosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -287,5 +323,4 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
         this.tabelaFuncionarios = tabelaFuncionarios;
     }
 
-  
 }

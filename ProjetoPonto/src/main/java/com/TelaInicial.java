@@ -4,6 +4,7 @@ import com.Classes.Departamento;
 import com.Classes.Empresa;
 import com.Classes.Funcao;
 import com.Classes.Funcionario;
+import static com.Classes.Funcionario.ArrayFuncionario;
 import com.Classes.Horario;
 import com.dados.comandosBanco;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -36,6 +37,7 @@ public class TelaInicial extends javax.swing.JFrame {
         Horario.listarHorarios();
         Departamento.listarDepartamentos();
         Funcao.listarFuncoes();
+        
         
     }
 
@@ -534,8 +536,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void cadFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFuncionariosActionPerformed
         // TODO add your handling code here:
-        telaCadFuncionarios cadFuncionarios = new telaCadFuncionarios(0);
-        cadFuncionarios.setVisible(true);
+        telaListaFuncionarios listaFuncionarios = new telaListaFuncionarios();
+        listaFuncionarios.setVisible(true);
     }//GEN-LAST:event_cadFuncionariosActionPerformed
 
     private void cadEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadEmpresaActionPerformed

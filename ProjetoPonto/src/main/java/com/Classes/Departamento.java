@@ -4,7 +4,6 @@
  */
 package com.Classes;
 
-import static com.Classes.Funcionario.ArrayFuncionario;
 import static com.dados.conectaBanco.FecharConexao;
 import static com.dados.conectaBanco.getConexaoMySQL;
 import java.sql.ResultSet;
@@ -26,19 +25,17 @@ public class Departamento {
     public static ArrayList<Departamento> ArrayDepartamento = new ArrayList<>();
     public static List<String> ArrayNomesDepartamento = new ArrayList<String>();
 
-    public static int localizaIdex(int id_departamento) {
+    public static int localizaIndexDepartamento(int id_departamento) {
+        int i = 0;
         int index = 0;
-        for (int i = 0; i < ArrayDepartamento.size(); i++) {
-            if (ArrayDepartamento.get(i).getId() == id_departamento) {
-                System.out.println(ArrayDepartamento.get(i).getId());
+        for (Departamento dep : ArrayDepartamento) {
+            if (dep.id == id_departamento) {
+
                 index = i;
-                return index;
             }
-
-            System.out.println("Passou pelo for" + i + "vez");
+            i++;
         }
-        return 0;
-
+        return index;
     }
 
     public static void listarDepartamentos() {
