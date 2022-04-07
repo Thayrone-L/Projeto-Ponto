@@ -53,7 +53,7 @@ public class Empresa {
 
             stm.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na cconsulta", "Atenção!", JOptionPane.OK_OPTION);
+            System.out.println("2");
             e.printStackTrace();
         }
         FecharConexao();

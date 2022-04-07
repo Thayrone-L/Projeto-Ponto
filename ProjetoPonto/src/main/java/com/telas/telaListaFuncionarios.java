@@ -57,7 +57,6 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
         pBotoes = new javax.swing.JPanel();
         btnIncluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
         btnDemitidos = new javax.swing.JButton();
         pTabela = new javax.swing.JScrollPane();
         tabelaFuncionarios = new javax.swing.JTable();
@@ -106,13 +105,6 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setText("Excluir");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
-            }
-        });
-
         btnDemitidos.setText("Visualizar demitidos");
         btnDemitidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +121,6 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
                 .addGroup(pBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnIncluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDemitidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
@@ -140,9 +131,7 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
                 .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnAlterar)
-                .addGap(18, 18, 18)
-                .addComponent(btnExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
                 .addComponent(btnDemitidos)
                 .addGap(30, 30, 30))
         );
@@ -228,10 +217,6 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
         telacad.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
     private void btnDemitidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemitidosActionPerformed
         // TODO add your handling code here:
         telaListaDemitidos listaDemitidos = new telaListaDemitidos();
@@ -305,7 +290,6 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnDemitidos;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnIncluir;
     private javax.swing.JLabel lblTituloPagina;
     private javax.swing.JPanel pBotoes;

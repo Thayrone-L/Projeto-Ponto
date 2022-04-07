@@ -119,7 +119,6 @@
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btnIncluir" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnAlterar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnExcluir" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnDemitidos" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -133,9 +132,7 @@
                       <Component id="btnIncluir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="btnAlterar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnExcluir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="220" max="32767" attributes="0"/>
+                      <EmptySpace pref="260" max="32767" attributes="0"/>
                       <Component id="btnDemitidos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
@@ -160,14 +157,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnExcluir">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Excluir"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnDemitidos">

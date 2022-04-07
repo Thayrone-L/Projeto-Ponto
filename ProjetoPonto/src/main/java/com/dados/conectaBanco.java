@@ -4,11 +4,13 @@
  */
 package com.dados;
 
-import java.sql.Connection;
-
-import java.sql.DriverManager;
-
+import com.telas.telaCriaBanco;
 import java.sql.SQLException;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 
 /**
  *
@@ -57,12 +59,61 @@ public class conectaBanco {
         } catch (SQLException e) {
 
             //Não conseguindo se conectar ao banco
-            System.out.println("Nao foi possivel conectar ao Banco de Dados.");
+            telaCriaBanco telaCriaBanco = new telaCriaBanco();
+            telaCriaBanco.setVisible(true);
 
             return null;
 
         }
 
+    }
+
+    public static boolean criaBanco() {
+        dadosConexao key = new dadosConexao();
+        String url = "jdbc:mysql://localhost";
+
+        // SQL command to create a database in MySQL.
+        scriptCriaBanco strg = new scriptCriaBanco();
+
+        try ( Connection conn = DriverManager.getConnection(url, key.username, key.password);  PreparedStatement stmt = conn.prepareStatement(strg.criaBanco)) {
+
+            stmt.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean criaTabelas() {
+        dadosConexao key = new dadosConexao();
+        String url = "jdbc:mysql://localhost";
+
+        // SQL command to create a database in MySQL.
+        scriptCriaBanco strg = new scriptCriaBanco();
+        try ( Connection conn = DriverManager.getConnection(key.url, key.username, key.password);  Statement stmt = conn.createStatement();) {
+
+            stmt.executeUpdate(strg.criaTabelaFuncoes);
+            stmt.executeUpdate(strg.criaTabelaEmpresas);
+            stmt.executeUpdate(strg.criaTabelaFuncionarios);
+            stmt.executeUpdate(strg.criaTabelaBatidas);
+            stmt.executeUpdate(strg.criaTabelaCalculos);
+            stmt.executeUpdate(strg.criaTabelaEquipamentos);
+            stmt.executeUpdate(strg.criaTabelaEscalas);
+            stmt.executeUpdate(strg.criaTabelaFeriados);
+            stmt.executeUpdate(strg.criaTabelaUsuarios);
+            stmt.executeUpdate(strg.criaTabelaHorarios);
+            stmt.executeUpdate(strg.criaTabelaJustificativas);
+            stmt.executeUpdate(strg.criaTabelaRegistro_sistema);
+            stmt.executeUpdate(strg.criaTabelaSelecao_impressao);
+            
+            
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     //Método que retorna o status da sua conexão//

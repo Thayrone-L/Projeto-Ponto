@@ -42,7 +42,6 @@ public class Funcionario {
     private int id_horario;
     private Date nascimento;
     private int n_residencial;
-    private String centroCusto;
     private String nome;
     private String pis;
     private String telefone;
@@ -86,7 +85,7 @@ public class Funcionario {
             stm.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na cconsulta", "Atenção!", JOptionPane.OK_OPTION);
+            System.out.println("3");
             e.printStackTrace();
         }
         FecharConexao();
@@ -142,7 +141,6 @@ public class Funcionario {
                 + "', `cpf` = '" + func.getCpf()
                 + "', `web_senha` = '" + func.getWeb_senha()
                 + "', `banco` = '" + banco
-                + "', `centro_custos` = '" + func.getCentroCusto()
                 + "', `n_pis` = '" + func.getPis()
                 + "', `banco_id` = '" + func.getBanco_id()
                 + "', `cnh` = '" + func.getCnh()
@@ -162,7 +160,7 @@ public class Funcionario {
 
             JOptionPane.showMessageDialog(null, "Salvo com sucesso", "Salvo!", JOptionPane.OK_OPTION);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na cconsulta", "Atenção!", JOptionPane.OK_OPTION);
+            System.out.println("4");
             e.printStackTrace();
         }
         FecharConexao();
@@ -170,11 +168,28 @@ public class Funcionario {
     }
 
     public static void salvaFuncionario(Funcionario func) {
-        int tamanho = ArrayFuncionario.size();
-        System.out.println(tamanho);
-        int ultimoId = Funcionario.ArrayFuncionario.get(tamanho-1).getId();
-        System.out.println(ultimoId);
-        int id = ultimoId + 1;
+
+        ResultSet rs = null;
+        String selectCountSql = "SELECT COUNT('id') FROM funcionarios ;";
+        int count = 0;
+        try {
+
+            Statement stm = getConexaoMySQL().createStatement();
+
+            rs = stm.executeQuery(selectCountSql);
+            rs.next();
+            count = rs.getInt(1);
+            stm.close();
+
+        } catch (SQLException e) {
+            System.out.println("5");
+            e.printStackTrace();
+        }
+        FecharConexao();
+
+        int total = count;
+
+        int id = total + 1;
         System.out.println(id);
         int digital;
         if (func.isDigital()) {
@@ -200,17 +215,32 @@ public class Funcionario {
         } else {
             webNivel = Integer.parseInt(func.getWeb_nivel());
         }
+        String demissao;
+        if (func.getDemissao() == null) {
 
+            demissao = null;
+        } else {
+            demissao = "'" + func.getDemissao() + "'";
+        }
+        String nascimento;
+        if (func.getNascimento() == null) {
+
+            nascimento = null;
+        } else {
+            nascimento = "'" + func.getNascimento() + "'";
+        }
+        
+        System.out.println(func.getFuncao());
         String InsertSql = "INSERT INTO `funcionarios` VALUES ("
                 + id
                 + ", " + func.getFolha()
-                + ", '" + func.getNome()+"'"
+                + ", '" + func.getNome() + "'"
                 + ", " + func.getEmpresa_id()
                 + ", " + func.getId_horario()
                 + ", " + func.getFuncao()
                 + ", " + func.getDepartamento()
-                + ", " + func.getAdmissao()
-                + ", " + func.getDemissao()
+                + ", '" + func.getAdmissao() + "'"
+                + ", " + demissao
                 + ", " + digital
                 + ", " + func.getEndereco()
                 + ", " + func.getBairro()
@@ -222,7 +252,6 @@ public class Funcionario {
                 + ", " + func.getNascimento()
                 + ", " + func.getWeb_senha()
                 + ", " + banco
-                + ", " + func.getCentroCusto()
                 + ", " + func.getPis()
                 + ", " + func.getBanco_id()
                 + ", " + func.getCnh()
@@ -242,7 +271,7 @@ public class Funcionario {
 
             JOptionPane.showMessageDialog(null, "Salvo com sucesso", "Salvo!", JOptionPane.OK_OPTION);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na cconsulta", "Atenção!", JOptionPane.OK_OPTION);
+            System.out.println("6");
             e.printStackTrace();
         }
         FecharConexao();
@@ -267,7 +296,6 @@ public class Funcionario {
                 func.setBanco_id(rs.getInt("banco_id"));
                 func.setCat_cnh(rs.getString("cat_cnh"));
                 func.setCep(rs.getString("cep"));
-                func.setCentroCusto(rs.getString("centro_custos"));
                 func.setCidade(rs.getString("cidade"));
                 func.setCnh(rs.getInt("cnh"));
                 func.setCpf(rs.getString("cpf"));
@@ -296,7 +324,7 @@ public class Funcionario {
             stm.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na cconsulta", "Atenção!", JOptionPane.OK_OPTION);
+            System.out.println("7");
             e.printStackTrace();
         }
         FecharConexao();
@@ -322,7 +350,6 @@ public class Funcionario {
                 func.setBanco_id(rs.getInt("banco_id"));
                 func.setCat_cnh(rs.getString("cat_cnh"));
                 func.setCep(rs.getString("cep"));
-                func.setCentroCusto(rs.getString("centro_custos"));
                 func.setCidade(rs.getString("cidade"));
                 func.setCnh(rs.getInt("cnh"));
                 func.setCpf(rs.getString("cpf"));
@@ -350,7 +377,7 @@ public class Funcionario {
             stm.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na cconsulta", "Atenção!", JOptionPane.OK_OPTION);
+            System.out.println("8");
             e.printStackTrace();
         }
         FecharConexao();
@@ -366,7 +393,6 @@ public class Funcionario {
                 + " / " + this.getBanco_id()
                 + " / " + this.getCat_cnh()
                 + " / " + this.getCep()
-                + " / " + this.getCentroCusto()
                 + " / " + this.getCidade()
                 + " / " + this.getCnh()
                 + " / " + this.getCpf()
@@ -390,14 +416,6 @@ public class Funcionario {
                 + " / " + this.getWeb_senha()
         );
 
-    }
-
-    public String getCentroCusto() {
-        return centroCusto;
-    }
-
-    public void setCentroCusto(String centroCusto) {
-        this.centroCusto = centroCusto;
     }
 
     public Date getAdmissao() {

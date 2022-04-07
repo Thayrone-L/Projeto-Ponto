@@ -1,4 +1,5 @@
 com\TelaInicial$12.class
+com\telas\telaCriaBanco.class
 com\dados\dadosConexao.class
 com\Classes\Departamento.class
 com\telas\telaCadFuncionarios$9.class
@@ -8,6 +9,7 @@ com\telas\telaListaHorarios$2.class
 com\TelaInicial$6.class
 com\TelaInicial$3.class
 com\telas\telaCadFuncionarios$3.class
+com\telas\telaCriaBanco$2.class
 com\telas\telaCadFuncionarios$6.class
 com\telas\telaListaFuncionarios$3.class
 com\TelaInicial$13.class
@@ -15,6 +17,7 @@ com\Classes\Funcao.class
 com\telas\telaListaFuncionarios.class
 br\com\parg\viacep\ViaCEPEvents.class
 br\com\parg\viacep\CEP.class
+com\telas\telaCriaBanco$3.class
 com\TelaInicial$4.class
 com\telas\telaListaFuncionarios$7.class
 com\Classes\Horario.class
@@ -44,9 +47,10 @@ com\dados\comandosBanco.class
 com\telas\telaCadFuncionarios.class
 com\TelaInicial$11.class
 com\TelaInicial$9.class
-com\telas\telaListaFuncionarios$8.class
 com\TelaInicial$5.class
+com\dados\scriptCriaBanco.class
 com\telas\telaListaFuncionarios$5.class
+com\telas\telaCriaBanco$1.class
 com\telas\telaListaHorarios.class
 com\telas\telaListaDemitidos$1.class
 com\telas\telaListaHorarios$1.class

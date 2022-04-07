@@ -14,7 +14,7 @@ public class dadosConexao {
     
     protected String serverName = "localhost";    //caminho do servidor do BD
 
-    protected String mydatabase = "ponto";        //nome do seu banco de dados
+    protected String mydatabase = "BancoPonto";        //nome do seu banco de dados
 
     protected String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
 

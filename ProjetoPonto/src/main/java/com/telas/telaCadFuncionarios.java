@@ -178,8 +178,6 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
         tbDemissao = new javax.swing.JFormattedTextField();
         cbFuncao = new javax.swing.JComboBox<>();
         cbDepartamento = new javax.swing.JComboBox<>();
-        lblDepartamento1 = new javax.swing.JLabel();
-        cbCentroCusto = new javax.swing.JComboBox<>();
         tabAdicionais = new javax.swing.JPanel();
         lblEndereco = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
@@ -264,8 +262,8 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
             painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelTituloLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(lblTitulo)
+                .addGap(161, 161, 161)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -402,22 +400,31 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
         cbDepartamento.setMinimumSize(new java.awt.Dimension(250, 22));
         cbDepartamento.setPreferredSize(new java.awt.Dimension(250, 22));
 
-        lblDepartamento1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDepartamento1.setText("Centro de Custo");
-
-        cbCentroCusto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbCentroCusto.setMaximumSize(new java.awt.Dimension(250, 22));
-        cbCentroCusto.setMinimumSize(new java.awt.Dimension(250, 22));
-        cbCentroCusto.setPreferredSize(new java.awt.Dimension(250, 22));
-
         javax.swing.GroupLayout tabPrincipalLayout = new javax.swing.GroupLayout(tabPrincipal);
         tabPrincipal.setLayout(tabPrincipalLayout);
         tabPrincipalLayout.setHorizontalGroup(
             tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabPrincipalLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(tabPrincipalLayout.createSequentialGroup()
+                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabPrincipalLayout.createSequentialGroup()
+                        .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(tabPrincipalLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(lblDepartamento)
+                                .addGap(30, 30, 30)
+                                .addComponent(cbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabPrincipalLayout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblAdmissao)
+                                    .addComponent(lblDemissao))
+                                .addGap(30, 30, 30)
+                                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tbAdmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tbDemissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(164, 164, 164))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabPrincipalLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblHorario)
                             .addComponent(lblEmpresa)
@@ -426,27 +433,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
                         .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbHorario, javax.swing.GroupLayout.Alignment.TRAILING, 0, 414, Short.MAX_VALUE)
                             .addComponent(cbEmpresa, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(tabPrincipalLayout.createSequentialGroup()
-                        .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(tabPrincipalLayout.createSequentialGroup()
-                                .addComponent(lblDepartamento1)
-                                .addGap(30, 30, 30)
-                                .addComponent(cbCentroCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(tabPrincipalLayout.createSequentialGroup()
-                                .addComponent(lblDepartamento)
-                                .addGap(30, 30, 30)
-                                .addComponent(cbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabPrincipalLayout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblAdmissao)
-                                    .addComponent(lblDemissao))
-                                .addGap(30, 30, 30)
-                                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tbAdmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tbDemissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(164, 164, 164)))
+                            .addComponent(cbFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
         tabPrincipalLayout.setVerticalGroup(
@@ -468,10 +455,6 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
                 .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDepartamento)
                     .addComponent(cbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDepartamento1)
-                    .addComponent(cbCentroCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(tabPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdmissao)
@@ -978,7 +961,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
                 Funcionario.ArrayFuncionario.get(index).setCat_cnh(cbCategoria.getItemAt(cbCategoria.getSelectedIndex()));
             }
 
-            Funcionario.ArrayFuncionario.get(index).setCat_cnh(cbCentroCusto.getItemAt(cbCentroCusto.getSelectedIndex()));
+            
 
             if (checkHabilitaBanco.isSelected()) {
                 Funcionario.ArrayFuncionario.get(index).setBanco(true);
@@ -1040,7 +1023,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
                 try {
                     java.util.Date data = dateFormat.parse(tbAdmissao.getText());
                     java.sql.Date dataSql = new java.sql.Date(data.getTime());
-
+                    System.out.println(dataSql);
                     novoFunc.setAdmissao(dataSql);
                 } catch (ParseException ex) {
                     Logger.getLogger(telaCadFuncionarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -1276,7 +1259,6 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
     private javax.swing.JButton btnNovoAfastamento;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbCategoria;
-    private javax.swing.JComboBox<String> cbCentroCusto;
     private javax.swing.JComboBox<String> cbCopiar;
     private javax.swing.JComboBox<String> cbCredito;
     private javax.swing.JComboBox<String> cbDebito;
@@ -1308,7 +1290,6 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
     private javax.swing.JLabel lblDebito;
     private javax.swing.JLabel lblDemissao;
     private javax.swing.JLabel lblDepartamento;
-    private javax.swing.JLabel lblDepartamento1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmpresa;
     private javax.swing.JLabel lblEndereco;
