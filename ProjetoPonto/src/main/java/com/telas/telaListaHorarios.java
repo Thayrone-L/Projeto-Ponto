@@ -4,17 +4,56 @@
  */
 package com.telas;
 
+import com.Classes.Horario;
+import static com.Classes.Horario.ArrayHorario;
+import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author thayrone
  */
 public class telaListaHorarios extends javax.swing.JFrame {
 
+    public int click = 0;
+
     /**
      * Creates new form telaListaHorarios
      */
     public telaListaHorarios() {
+        setSize(750, 500);
+        setResizable(false);
+        setLocationRelativeTo(null);
         initComponents();
+        limpaTabela();
+        preencheTabela();
+
+    }
+
+    public void preencheTabela() {
+
+        DefaultTableModel modelo = (DefaultTableModel) tabelaHorarios.getModel();
+      
+        modelo.setNumRows(0);
+        Horario func = new Horario();
+        if (func.ArrayHorario.size() == 0) {
+            func.listarHorarios();
+        }
+        for (int i = 0; i < func.ArrayHorario.size(); i++) {
+            modelo.addRow(new Object[]{func.ArrayHorario.get(i).getNome()});
+        }
+
+    }
+
+    public void limpaTabela() {
+
+        DefaultTableModel model = (DefaultTableModel) tabelaHorarios.getModel();
+        while (model.getRowCount() > 0) {
+            model.removeRow(0);
+        }
     }
 
     /**
@@ -26,89 +65,195 @@ public class telaListaHorarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pTitulo = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
+        painelTituloPagina = new javax.swing.JPanel();
+        lblTituloPagina = new javax.swing.JLabel();
         pPrincipal = new javax.swing.JPanel();
-        btnNovo = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        pLista = new javax.swing.JScrollPane();
-        listaHorarios = new javax.swing.JList<>();
+        pBotoes = new javax.swing.JPanel();
+        btnIncluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnDemitidos = new javax.swing.JButton();
+        pTabela = new javax.swing.JScrollPane();
+        tabelaHorarios = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        pTitulo.setBackground(new java.awt.Color(0, 102, 153));
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-hora-extra-64.png"))); // NOI18N
-        lblTitulo.setText("Horários");
-
-        javax.swing.GroupLayout pTituloLayout = new javax.swing.GroupLayout(pTitulo);
-        pTitulo.setLayout(pTituloLayout);
-        pTituloLayout.setHorizontalGroup(
-            pTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pTituloLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pTituloLayout.setVerticalGroup(
-            pTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pTituloLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(pTitulo, java.awt.BorderLayout.PAGE_START);
-
-        btnNovo.setText("Novo horário");
-
-        btnEditar.setText("Editar");
-
-        btnExcluir.setText("Excluir");
-
-        listaHorarios.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
         });
-        pLista.setViewportView(listaHorarios);
+
+        painelTituloPagina.setBackground(new java.awt.Color(0, 102, 153));
+
+        lblTituloPagina.setBackground(new java.awt.Color(0, 102, 153));
+        lblTituloPagina.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTituloPagina.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-hora-extra-64.png"))); // NOI18N
+        lblTituloPagina.setText("Lista de Horários");
+
+        javax.swing.GroupLayout painelTituloPaginaLayout = new javax.swing.GroupLayout(painelTituloPagina);
+        painelTituloPagina.setLayout(painelTituloPaginaLayout);
+        painelTituloPaginaLayout.setHorizontalGroup(
+            painelTituloPaginaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelTituloPaginaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTituloPagina, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        painelTituloPaginaLayout.setVerticalGroup(
+            painelTituloPaginaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelTituloPaginaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTituloPagina, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(painelTituloPagina, java.awt.BorderLayout.NORTH);
+
+        btnIncluir.setText("Incluir");
+        btnIncluir.setPreferredSize(new java.awt.Dimension(100, 22));
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
+
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
+        btnDemitidos.setText("Excluir");
+        btnDemitidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDemitidosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pBotoesLayout = new javax.swing.GroupLayout(pBotoes);
+        pBotoes.setLayout(pBotoesLayout);
+        pBotoesLayout.setHorizontalGroup(
+            pBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pBotoesLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnIncluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDemitidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
+        );
+        pBotoesLayout.setVerticalGroup(
+            pBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pBotoesLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnAlterar)
+                .addGap(18, 18, 18)
+                .addComponent(btnDemitidos)
+                .addContainerGap(272, Short.MAX_VALUE))
+        );
+
+        pTabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pTabelaMouseClicked(evt);
+            }
+        });
+
+        tabelaHorarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Nome"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaHorarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaHorariosMouseClicked(evt);
+            }
+        });
+        pTabela.setViewportView(tabelaHorarios);
+        if (tabelaHorarios.getColumnModel().getColumnCount() > 0) {
+            tabelaHorarios.getColumnModel().getColumn(0).setResizable(false);
+            tabelaHorarios.getColumnModel().getColumn(0).setPreferredWidth(320);
+        }
 
         javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
         pPrincipal.setLayout(pPrincipalLayout);
         pPrincipalLayout.setHorizontalGroup(
             pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPrincipalLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(pLista, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addComponent(pBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pTabela, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pPrincipalLayout.setVerticalGroup(
             pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPrincipalLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(pPrincipalLayout.createSequentialGroup()
                 .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pLista, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pPrincipalLayout.createSequentialGroup()
-                        .addComponent(btnNovo)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExcluir)))
-                .addGap(19, 19, 19))
+                        .addContainerGap()
+                        .addComponent(pTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         getContentPane().add(pPrincipal, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnDemitidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemitidosActionPerformed
+        // TODO add your handling code here:
+        telaListaDemitidos listaDemitidos = new telaListaDemitidos();
+        listaDemitidos.setVisible(true);
+    }//GEN-LAST:event_btnDemitidosActionPerformed
+
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void pTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pTabelaMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_pTabelaMouseClicked
+
+    private void tabelaHorariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaHorariosMouseClicked
+        // TODO add your handling code here:
+        if (click < 1) {
+
+            click++;
+
+        } else {
+
+        }
+    }//GEN-LAST:event_tabelaHorariosMouseClicked
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        limpaTabela();
+        preencheTabela();
+    }//GEN-LAST:event_formFocusGained
 
     /**
      * @param args the command line arguments
@@ -136,6 +281,7 @@ public class telaListaHorarios extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(telaListaHorarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -146,13 +292,23 @@ public class telaListaHorarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnNovo;
-    private javax.swing.JLabel lblTitulo;
-    private javax.swing.JList<String> listaHorarios;
-    private javax.swing.JScrollPane pLista;
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnDemitidos;
+    private javax.swing.JButton btnIncluir;
+    private javax.swing.JLabel lblTituloPagina;
+    private javax.swing.JPanel pBotoes;
     private javax.swing.JPanel pPrincipal;
-    private javax.swing.JPanel pTitulo;
+    private javax.swing.JScrollPane pTabela;
+    private javax.swing.JPanel painelTituloPagina;
+    private javax.swing.JTable tabelaHorarios;
     // End of variables declaration//GEN-END:variables
+
+    public JTable getTabelaHorarios() {
+        return tabelaHorarios;
+    }
+
+    public void setTabelaHorarios(JTable tabelaHorarios) {
+        this.tabelaHorarios = tabelaHorarios;
+    }
+
 }

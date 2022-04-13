@@ -43,7 +43,7 @@ public class Funcionario {
     private Date nascimento;
     private int n_residencial;
     private String nome;
-    private String pis;
+    private int pis;
     private String telefone;
     private boolean web;
     private String web_email;
@@ -229,7 +229,7 @@ public class Funcionario {
         } else {
             nascimento = "'" + func.getNascimento() + "'";
         }
-        
+
         System.out.println(func.getFuncao());
         String InsertSql = "INSERT INTO `funcionarios` VALUES ("
                 + id
@@ -281,7 +281,7 @@ public class Funcionario {
     public void listarFuncionarios() {
 
         ResultSet rs = null;
-        String selectSql = "SELECT * FROM funcionarios WHERE demissao IS NULL ;";
+        String selectSql = "SELECT * FROM funcionarios ;";
 
         try {
 
@@ -311,7 +311,7 @@ public class Funcionario {
                 func.setId_horario(rs.getInt("id_horario"));
                 func.setNascimento(rs.getDate("nascimento"));
                 func.setNome(rs.getString("nome"));
-                func.setPis(rs.getString("n_pis"));
+                func.setPis(rs.getInt("n_pis"));
                 func.setTelefone(rs.getNString("telefone"));
                 func.setWeb(rs.getBoolean("web"));
                 func.setWeb_email(rs.getString("web_email"));
@@ -329,6 +329,15 @@ public class Funcionario {
         }
         FecharConexao();
 
+    }
+
+    public boolean consultaPis(int pis) {
+        for (int i = 0; i <= ArrayFuncionario.size(); i++) {
+            if (ArrayFuncionario.get(i).getPis() == pis) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void listarFuncionariosDemitidos() {
@@ -365,7 +374,7 @@ public class Funcionario {
                 func.setId_horario(rs.getInt("id_horario"));
                 func.setNascimento(rs.getDate("nascimento"));
                 func.setNome(rs.getString("nome"));
-                func.setPis(rs.getString("n_pis"));
+                func.setPis(rs.getInt("n_pis"));
                 func.setTelefone(rs.getNString("telefone"));
                 func.setWeb(rs.getBoolean("web"));
                 func.setWeb_email(rs.getString("web_email"));
@@ -594,11 +603,11 @@ public class Funcionario {
         this.n_residencial = n_residencial;
     }
 
-    public String getPis() {
+    public int getPis() {
         return pis;
     }
 
-    public void setPis(String pis) {
+    public void setPis(int pis) {
         this.pis = pis;
     }
 

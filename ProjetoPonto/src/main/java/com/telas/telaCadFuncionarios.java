@@ -54,12 +54,12 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
     private void preenche() {
 
         if (id_recebido != 0) {
-
+            
             int index = Funcionario.localizaIdex(id_recebido);
             tbNome.setText(Funcionario.ArrayFuncionario.get(index).getNome());
             tbFolha.setText(Integer.toString(Funcionario.ArrayFuncionario.get(index).getFolha()));
-            tbPis.setText(Funcionario.ArrayFuncionario.get(index).getPis());
-
+            tbPis.setText(Integer.toString(Funcionario.ArrayFuncionario.get(index).getPis()));
+/*
             int empresaID = Funcionario.ArrayFuncionario.get(index).getEmpresa_id();
             int indexEmpresa = empresaID - 1;
             cbEmpresa.setSelectedIndex(indexEmpresa);
@@ -72,7 +72,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
 
             int indexDepartamento = Departamento.localizaIndexDepartamento(Funcionario.ArrayFuncionario.get(index).getDepartamento());
             cbDepartamento.setSelectedIndex(indexDepartamento);
-
+*/
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             String AdmissaoFormatada = dateFormat.format(Funcionario.ArrayFuncionario.get(index).getAdmissao());
             tbAdmissao.setText(AdmissaoFormatada);
@@ -236,6 +236,11 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
         tbSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         painelTitulo.setBackground(new java.awt.Color(0, 102, 153));
 
@@ -900,7 +905,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
 
             Funcionario.ArrayFuncionario.get(index).setFolha(Integer.parseInt(tbFolha.getText()));
 
-            Funcionario.ArrayFuncionario.get(index).setPis(tbPis.getText());
+            Funcionario.ArrayFuncionario.get(index).setPis(Integer.parseInt(tbPis.getText()));
 
             Funcionario.ArrayFuncionario.get(index).setEmpresa_id(cbEmpresa.getSelectedIndex() + 1);
 
@@ -961,8 +966,6 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
                 Funcionario.ArrayFuncionario.get(index).setCat_cnh(cbCategoria.getItemAt(cbCategoria.getSelectedIndex()));
             }
 
-            
-
             if (checkHabilitaBanco.isSelected()) {
                 Funcionario.ArrayFuncionario.get(index).setBanco(true);
             }
@@ -978,9 +981,16 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
             Funcionario.atualizaFuncionario(Funcionario.ArrayFuncionario.get(index));
 
         } else {
-
+            
             Funcionario novoFunc = new Funcionario();
-
+            if (tbPis.getText() == null || tbPis.getText().trim().equals("")) {
+                tbPis.setBorder(BorderFactory.createLineBorder(Color.red));
+                showMessageDialog(null, "Insira o numero do Pis*");
+                tbPis.requestFocus();
+            } else {
+                
+                novoFunc.setPis(Integer.parseInt(tbPis.getText()));
+            }
             if (tbNome.getText() == null || tbNome.getText().trim().equals("")) {
                 tbNome.setBorder(BorderFactory.createLineBorder(Color.red));
                 showMessageDialog(null, "Insira o nome*");
@@ -989,6 +999,8 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
 
                 novoFunc.setNome(tbNome.getText());
             }
+            
+            
 
             if (tbFolha.getText() == null || tbFolha.getText().trim().equals("")) {
                 tbFolha.setBorder(BorderFactory.createLineBorder(Color.red));
@@ -997,13 +1009,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
             } else {
                 novoFunc.setFolha(Integer.parseInt(tbFolha.getText()));
             }
-            if (tbPis.getText() == null || tbPis.getText().trim().equals("")) {
-                tbPis.setBorder(BorderFactory.createLineBorder(Color.red));
-                showMessageDialog(null, "Insira o numero do Pis*");
-                tbPis.requestFocus();
-            } else {
-                novoFunc.setPis(tbPis.getText());
-            }
+            
 
             novoFunc.setEmpresa_id(cbEmpresa.getSelectedIndex() + 1);
 
@@ -1016,7 +1022,7 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
 
             if (tbAdmissao.getText() == null || tbAdmissao.getText().trim().equals("")) {
                 tbAdmissao.setBorder(BorderFactory.createLineBorder(Color.red));
-                showMessageDialog(null, "Insira o numero do Pis*");
+                showMessageDialog(null, "Insira a data de admissão*");
                 tbAdmissao.requestFocus();
             } else {
 
@@ -1109,10 +1115,14 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
                 novoFunc.setWeb_nivel(null);
                 novoFunc.setWeb_senha(null);
             }
+            
+            
 
             ArrayFuncionario.add(novoFunc);
+            int tamanho = ArrayFuncionario.size();
+            novoFunc.setId(tamanho);
 
-            Funcionario.salvaFuncionario(Funcionario.ArrayFuncionario.get(ArrayFuncionario.size() - 1));
+            Funcionario.salvaFuncionario(novoFunc);
 
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -1207,6 +1217,12 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_checkHabilitaWebActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        telaListaFuncionarios listaFuncionarios = new telaListaFuncionarios();
+        listaFuncionarios.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

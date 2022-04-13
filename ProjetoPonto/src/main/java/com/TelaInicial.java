@@ -9,7 +9,9 @@ import com.Classes.Horario;
 import com.dados.comandosBanco;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.telas.telaCadFuncionarios;
+import com.telas.telaListaEscalas;
 import com.telas.telaListaFuncionarios;
+import com.telas.telaListaHorarios;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -37,8 +39,7 @@ public class TelaInicial extends javax.swing.JFrame {
         Horario.listarHorarios();
         Departamento.listarDepartamentos();
         Funcao.listarFuncoes();
-        
-        
+
     }
 
     public void atualizaPainel() {
@@ -159,6 +160,11 @@ public class TelaInicial extends javax.swing.JFrame {
         btnHorarios.setMinimumSize(new java.awt.Dimension(131, 105));
         btnHorarios.setPreferredSize(new java.awt.Dimension(131, 105));
         btnHorarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHorarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHorariosActionPerformed(evt);
+            }
+        });
 
         btnEscalas.setBackground(new java.awt.Color(0, 102, 153));
         btnEscalas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -388,6 +394,11 @@ public class TelaInicial extends javax.swing.JFrame {
 
         cadEscalas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         cadEscalas.setText("Escalas");
+        cadEscalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadEscalasActionPerformed(evt);
+            }
+        });
         menuCadastros.add(cadEscalas);
         menuCadastros.add(jSeparator3);
 
@@ -547,7 +558,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void cadHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadHorariosActionPerformed
         // TODO add your handling code here:
-
+        telaListaHorarios listaHorarios = new telaListaHorarios();
+        listaHorarios.setVisible(true);
     }//GEN-LAST:event_cadHorariosActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -557,6 +569,9 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnEscalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscalasActionPerformed
         // TODO add your handling code here:
+
+        telaListaEscalas listaEscalas = new telaListaEscalas();
+        listaEscalas.setVisible(true);
     }//GEN-LAST:event_btnEscalasActionPerformed
 
     private void comRecebeAFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comRecebeAFDActionPerformed
@@ -587,6 +602,18 @@ public class TelaInicial extends javax.swing.JFrame {
         telaListaFuncionarios listaFuncionarios = new telaListaFuncionarios();
         listaFuncionarios.setVisible(true);
     }//GEN-LAST:event_btnFuncionariosActionPerformed
+
+    private void btnHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHorariosActionPerformed
+        // TODO add your handling code here:
+        telaListaHorarios listaHorarios = new telaListaHorarios();
+        listaHorarios.setVisible(true);
+    }//GEN-LAST:event_btnHorariosActionPerformed
+
+    private void cadEscalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadEscalasActionPerformed
+        // TODO add your handling code here:
+        telaListaEscalas listaEscalas = new telaListaEscalas();
+        listaEscalas.setVisible(true);
+    }//GEN-LAST:event_cadEscalasActionPerformed
 
     /**
      * @param args the command line arguments

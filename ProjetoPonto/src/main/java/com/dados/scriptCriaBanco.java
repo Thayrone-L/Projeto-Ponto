@@ -60,7 +60,7 @@ public class scriptCriaBanco {
             + "  nascimento datetime DEFAULT NULL,"
             + "  web_senha VARCHAR(10) DEFAULT NULL,"
             + "  banco tinyint(1) DEFAULT NULL,"
-            + "  n_pis VARCHAR(20) DEFAULT NULL,"
+            + "  n_pis int DEFAULT NULL,"
             + "  banco_id int DEFAULT NULL,"
             + "  cnh int DEFAULT NULL,"
             + "  cat_cnh VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,"

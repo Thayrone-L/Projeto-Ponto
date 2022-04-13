@@ -8,6 +8,8 @@ import com.Classes.Funcionario;
 import static com.Classes.Funcionario.ArrayFuncionario;
 import java.util.ArrayList;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,20 +28,36 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         initComponents();
+        limpaTabela();
         preencheTabela();
-        
+
     }
 
     public void preencheTabela() {
 
         DefaultTableModel modelo = (DefaultTableModel) tabelaFuncionarios.getModel();
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        tabelaFuncionarios.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+        tabelaFuncionarios.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+        tabelaFuncionarios.getColumnModel().getColumn(3).setCellRenderer(centralizado);
         modelo.setNumRows(0);
         Funcionario func = new Funcionario();
-        func.listarFuncionarios();
+        if (func.ArrayFuncionario.size() == 0) {
+            func.listarFuncionarios();
+        }
         for (int i = 0; i < func.ArrayFuncionario.size(); i++) {
             modelo.addRow(new Object[]{func.ArrayFuncionario.get(i).getId(), func.ArrayFuncionario.get(i).getNome(), func.ArrayFuncionario.get(i).getFolha(), func.ArrayFuncionario.get(i).getPis()});
         }
 
+    }
+
+    public void limpaTabela() {
+
+        DefaultTableModel model = (DefaultTableModel) tabelaFuncionarios.getModel();
+        while (model.getRowCount() > 0) {
+            model.removeRow(0);
+        }
     }
 
     /**
@@ -62,6 +80,11 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
         tabelaFuncionarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         painelTituloPagina.setBackground(new java.awt.Color(0, 102, 153));
 
@@ -150,7 +173,7 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "#ID", "Nome", "Nº Folha", "Nº Pis"
+                "ID", "Nome", "Nº Folha", "Nº Pis"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -168,18 +191,13 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
         });
         pTabela.setViewportView(tabelaFuncionarios);
         if (tabelaFuncionarios.getColumnModel().getColumnCount() > 0) {
-            tabelaFuncionarios.getColumnModel().getColumn(0).setMinWidth(30);
-            tabelaFuncionarios.getColumnModel().getColumn(0).setPreferredWidth(30);
-            tabelaFuncionarios.getColumnModel().getColumn(0).setMaxWidth(30);
-            tabelaFuncionarios.getColumnModel().getColumn(1).setMinWidth(320);
+            tabelaFuncionarios.getColumnModel().getColumn(0).setResizable(false);
+            tabelaFuncionarios.getColumnModel().getColumn(1).setResizable(false);
             tabelaFuncionarios.getColumnModel().getColumn(1).setPreferredWidth(320);
-            tabelaFuncionarios.getColumnModel().getColumn(1).setMaxWidth(320);
-            tabelaFuncionarios.getColumnModel().getColumn(2).setMinWidth(80);
+            tabelaFuncionarios.getColumnModel().getColumn(2).setResizable(false);
             tabelaFuncionarios.getColumnModel().getColumn(2).setPreferredWidth(80);
-            tabelaFuncionarios.getColumnModel().getColumn(2).setMaxWidth(80);
-            tabelaFuncionarios.getColumnModel().getColumn(3).setMinWidth(150);
-            tabelaFuncionarios.getColumnModel().getColumn(3).setPreferredWidth(150);
-            tabelaFuncionarios.getColumnModel().getColumn(3).setMaxWidth(150);
+            tabelaFuncionarios.getColumnModel().getColumn(3).setResizable(false);
+            tabelaFuncionarios.getColumnModel().getColumn(3).setPreferredWidth(80);
         }
 
         javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
@@ -189,8 +207,8 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
             .addGroup(pPrincipalLayout.createSequentialGroup()
                 .addComponent(pBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pTabela, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
         pPrincipalLayout.setVerticalGroup(
             pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,6 +233,7 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
         telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
         telacad.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnDemitidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemitidosActionPerformed
@@ -228,6 +247,7 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
         telaCadFuncionarios telacad = new telaCadFuncionarios(0);
         telacad.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void pTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pTabelaMouseClicked
@@ -245,12 +265,20 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
             DefaultTableModel modelo = (DefaultTableModel) tabelaFuncionarios.getModel();
             int id_Selecionado = (int) modelo.getValueAt(this.getTabelaFuncionarios().getSelectedRow(), NORMAL);
+            
             telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
             telacad.setVisible(true);
             click = 0;
+            this.dispose();
 
         }
     }//GEN-LAST:event_tabelaFuncionariosMouseClicked
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        limpaTabela();
+        preencheTabela();
+    }//GEN-LAST:event_formFocusGained
 
     /**
      * @param args the command line arguments
