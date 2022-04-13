@@ -23,6 +23,8 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
     /**
      * Creates new form telaListaFuncionarios
      */
+    private static final telaListaDemitidos listaDemitidos = new telaListaDemitidos();
+
     public telaListaFuncionarios() {
         setSize(750, 500);
         setResizable(false);
@@ -233,12 +235,12 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
         telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
         telacad.setVisible(true);
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnDemitidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemitidosActionPerformed
         // TODO add your handling code here:
-        telaListaDemitidos listaDemitidos = new telaListaDemitidos();
+
         listaDemitidos.setVisible(true);
     }//GEN-LAST:event_btnDemitidosActionPerformed
 
@@ -247,7 +249,7 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
         telaCadFuncionarios telacad = new telaCadFuncionarios(0);
         telacad.setVisible(true);
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void pTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pTabelaMouseClicked
@@ -265,7 +267,7 @@ public class telaListaFuncionarios extends javax.swing.JFrame {
 
             DefaultTableModel modelo = (DefaultTableModel) tabelaFuncionarios.getModel();
             int id_Selecionado = (int) modelo.getValueAt(this.getTabelaFuncionarios().getSelectedRow(), NORMAL);
-            
+
             telaCadFuncionarios telacad = new telaCadFuncionarios(id_Selecionado);
             telacad.setVisible(true);
             click = 0;

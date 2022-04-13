@@ -31,6 +31,9 @@ public class TelaInicial extends javax.swing.JFrame {
     /**
      * Creates new form TelaInicial
      */
+    private static final  telaListaHorarios listaHorarios = new telaListaHorarios();
+    private static final telaListaEscalas listaEscalas = new telaListaEscalas();
+    private static final telaListaFuncionarios listaFuncionarios = new telaListaFuncionarios();
     public TelaInicial() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -547,7 +550,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void cadFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFuncionariosActionPerformed
         // TODO add your handling code here:
-        telaListaFuncionarios listaFuncionarios = new telaListaFuncionarios();
+        
         listaFuncionarios.setVisible(true);
     }//GEN-LAST:event_cadFuncionariosActionPerformed
 
@@ -558,7 +561,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void cadHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadHorariosActionPerformed
         // TODO add your handling code here:
-        telaListaHorarios listaHorarios = new telaListaHorarios();
+       
         listaHorarios.setVisible(true);
     }//GEN-LAST:event_cadHorariosActionPerformed
 
@@ -570,7 +573,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private void btnEscalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscalasActionPerformed
         // TODO add your handling code here:
 
-        telaListaEscalas listaEscalas = new telaListaEscalas();
+        
         listaEscalas.setVisible(true);
     }//GEN-LAST:event_btnEscalasActionPerformed
 
@@ -599,19 +602,19 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed
         // TODO add your handling code here:
-        telaListaFuncionarios listaFuncionarios = new telaListaFuncionarios();
+      
         listaFuncionarios.setVisible(true);
     }//GEN-LAST:event_btnFuncionariosActionPerformed
 
     private void btnHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHorariosActionPerformed
         // TODO add your handling code here:
-        telaListaHorarios listaHorarios = new telaListaHorarios();
+       
         listaHorarios.setVisible(true);
     }//GEN-LAST:event_btnHorariosActionPerformed
 
     private void cadEscalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadEscalasActionPerformed
         // TODO add your handling code here:
-        telaListaEscalas listaEscalas = new telaListaEscalas();
+       
         listaEscalas.setVisible(true);
     }//GEN-LAST:event_cadEscalasActionPerformed
 

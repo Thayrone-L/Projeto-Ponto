@@ -36,7 +36,7 @@ public class telaListaHorarios extends javax.swing.JFrame {
     public void preencheTabela() {
 
         DefaultTableModel modelo = (DefaultTableModel) tabelaHorarios.getModel();
-      
+
         modelo.setNumRows(0);
         Horario func = new Horario();
         if (func.ArrayHorario.size() == 0) {
@@ -96,8 +96,8 @@ public class telaListaHorarios extends javax.swing.JFrame {
             painelTituloPaginaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelTituloPaginaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTituloPagina, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(lblTituloPagina, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(358, Short.MAX_VALUE))
         );
         painelTituloPaginaLayout.setVerticalGroup(
             painelTituloPaginaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +230,9 @@ public class telaListaHorarios extends javax.swing.JFrame {
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
         // TODO add your handling code here:
-
+        telaCadHorarios telacad = new telaCadHorarios();
+        telacad.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void pTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pTabelaMouseClicked

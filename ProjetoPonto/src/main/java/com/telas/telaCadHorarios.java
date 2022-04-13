@@ -4,17 +4,66 @@
  */
 package com.telas;
 
+import com.Classes.Horario;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author thayrone
  */
 public class telaCadHorarios extends javax.swing.JFrame {
 
+    public int click = 0;
+
     /**
-     * Creates new form telaCadHorarios
+     * Creates new form telaListaHorarios
      */
     public telaCadHorarios() {
+
+        setResizable(false);
+        
         initComponents();
+        setLocationRelativeTo(null);
+        limpaTabela();
+        preencheTabela();
+
+    }
+
+    public final void preencheTabela() {
+
+        DefaultTableModel modelo = (DefaultTableModel) tabelaHorarios.getModel();
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        tabelaHorarios.getColumnModel().getColumn(0).setCellRenderer(esquerda);
+        tabelaHorarios.getColumnModel().getColumn(1).setCellRenderer(centralizado);
+        tabelaHorarios.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+        tabelaHorarios.getColumnModel().getColumn(3).setCellRenderer(centralizado);
+        tabelaHorarios.getColumnModel().getColumn(4).setCellRenderer(centralizado);
+        tabelaHorarios.getColumnModel().getColumn(5).setCellRenderer(centralizado);
+        tabelaHorarios.getColumnModel().getColumn(6).setCellRenderer(centralizado);
+        modelo.setNumRows(0);
+
+        modelo.addRow(new Object[]{"Segunda-feira", ":", ":", ":", ":",});
+        modelo.addRow(new Object[]{"Terça-feira", ":", ":", ":", ":",});
+        modelo.addRow(new Object[]{"Quarta-feira", ":", ":", ":", ":",});
+        modelo.addRow(new Object[]{"Quinta-feira", ":", ":", ":", ":",});
+        modelo.addRow(new Object[]{"Sexta-feira", ":", ":", ":", ":",});
+        modelo.addRow(new Object[]{"Sábado", ":", ":", ":", ":",});
+        modelo.addRow(new Object[]{"Domingo", ":", ":", ":", ":",});
+
+    }
+
+    public final void limpaTabela() {
+
+        DefaultTableModel model = (DefaultTableModel) tabelaHorarios.getModel();
+        while (model.getRowCount() > 0) {
+            model.removeRow(0);
+        }
     }
 
     /**
@@ -26,21 +75,202 @@ public class telaCadHorarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        painelTituloPagina = new javax.swing.JPanel();
+        lblTituloPagina4 = new javax.swing.JLabel();
+        btnSalvar3 = new javax.swing.JButton();
+        pPrincipal = new javax.swing.JPanel();
+        pTabela = new javax.swing.JScrollPane();
+        tabelaHorarios = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        painelTituloPagina4 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+
+        painelTituloPagina.setBackground(new java.awt.Color(0, 102, 153));
+
+        lblTituloPagina4.setBackground(new java.awt.Color(0, 102, 153));
+        lblTituloPagina4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTituloPagina4.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloPagina4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-hora-extra-64.png"))); // NOI18N
+        lblTituloPagina4.setText("Horários");
+
+        btnSalvar3.setBackground(new java.awt.Color(0, 102, 153));
+        btnSalvar3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSalvar3.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salvar.png"))); // NOI18N
+        btnSalvar3.setText("Salvar");
+
+        javax.swing.GroupLayout painelTituloPaginaLayout = new javax.swing.GroupLayout(painelTituloPagina);
+        painelTituloPagina.setLayout(painelTituloPaginaLayout);
+        painelTituloPaginaLayout.setHorizontalGroup(
+            painelTituloPaginaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelTituloPaginaLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblTituloPagina4, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 652, Short.MAX_VALUE)
+                .addComponent(btnSalvar3)
+                .addGap(20, 20, 20))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        painelTituloPaginaLayout.setVerticalGroup(
+            painelTituloPaginaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelTituloPaginaLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(painelTituloPaginaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTituloPagina4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar3))
+                .addGap(20, 20, 20))
         );
+
+        getContentPane().add(painelTituloPagina, java.awt.BorderLayout.NORTH);
+
+        pTabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pTabelaMouseClicked(evt);
+            }
+        });
+
+        tabelaHorarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tabelaHorarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "", "Entrada 1", "Saída 1", "Entrada 2", "Saída 2", "Alguma coisa", "Outra coisa"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaHorarios.setGridColor(new java.awt.Color(0, 0, 0));
+        tabelaHorarios.setRowHeight(40);
+        tabelaHorarios.setSelectionBackground(new java.awt.Color(0, 153, 204));
+        tabelaHorarios.setShowGrid(true);
+        tabelaHorarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaHorariosMouseClicked(evt);
+            }
+        });
+        pTabela.setViewportView(tabelaHorarios);
+        if (tabelaHorarios.getColumnModel().getColumnCount() > 0) {
+            tabelaHorarios.getColumnModel().getColumn(0).setResizable(false);
+            tabelaHorarios.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tabelaHorarios.getColumnModel().getColumn(1).setResizable(false);
+            tabelaHorarios.getColumnModel().getColumn(1).setPreferredWidth(20);
+            tabelaHorarios.getColumnModel().getColumn(2).setResizable(false);
+            tabelaHorarios.getColumnModel().getColumn(2).setPreferredWidth(20);
+            tabelaHorarios.getColumnModel().getColumn(3).setResizable(false);
+            tabelaHorarios.getColumnModel().getColumn(3).setPreferredWidth(20);
+            tabelaHorarios.getColumnModel().getColumn(4).setResizable(false);
+            tabelaHorarios.getColumnModel().getColumn(4).setPreferredWidth(20);
+            tabelaHorarios.getColumnModel().getColumn(5).setResizable(false);
+            tabelaHorarios.getColumnModel().getColumn(6).setResizable(false);
+        }
+
+        jLabel1.setText("Descrição");
+
+        javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
+        pPrincipal.setLayout(pPrincipalLayout);
+        pPrincipalLayout.setHorizontalGroup(
+            pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 1026, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20))
+        );
+        pPrincipalLayout.setVerticalGroup(
+            pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(pTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
+
+        getContentPane().add(pPrincipal, java.awt.BorderLayout.CENTER);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/copiar.png"))); // NOI18N
+        jButton1.setText("Copiar");
+
+        jButton2.setText("jButton1");
+
+        jButton3.setText("jButton1");
+
+        jButton4.setText("jButton1");
+
+        javax.swing.GroupLayout painelTituloPagina4Layout = new javax.swing.GroupLayout(painelTituloPagina4);
+        painelTituloPagina4.setLayout(painelTituloPagina4Layout);
+        painelTituloPagina4Layout.setHorizontalGroup(
+            painelTituloPagina4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelTituloPagina4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jButton1)
+                .addGap(20, 20, 20)
+                .addComponent(jButton2)
+                .addGap(20, 20, 20)
+                .addComponent(jButton3)
+                .addGap(20, 20, 20)
+                .addComponent(jButton4)
+                .addContainerGap(657, Short.MAX_VALUE))
+        );
+        painelTituloPagina4Layout.setVerticalGroup(
+            painelTituloPagina4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelTituloPagina4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(painelTituloPagina4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addGap(30, 30, 30))
+        );
+
+        getContentPane().add(painelTituloPagina4, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pTabelaMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_pTabelaMouseClicked
+
+    private void tabelaHorariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaHorariosMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tabelaHorariosMouseClicked
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        limpaTabela();
+        preencheTabela();
+    }//GEN-LAST:event_formFocusGained
 
     /**
      * @param args the command line arguments
@@ -68,6 +298,9 @@ public class telaCadHorarios extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(telaCadHorarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -78,5 +311,27 @@ public class telaCadHorarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalvar3;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblTituloPagina4;
+    private javax.swing.JPanel pPrincipal;
+    private javax.swing.JScrollPane pTabela;
+    private javax.swing.JPanel painelTituloPagina;
+    private javax.swing.JPanel painelTituloPagina4;
+    private javax.swing.JTable tabelaHorarios;
     // End of variables declaration//GEN-END:variables
+
+    public JTable getTabelaHorarios() {
+        return tabelaHorarios;
+    }
+
+    public void setTabelaHorarios(JTable tabelaHorarios) {
+        this.tabelaHorarios = tabelaHorarios;
+    }
+
 }

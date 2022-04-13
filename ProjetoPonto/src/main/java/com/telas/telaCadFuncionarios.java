@@ -268,9 +268,9 @@ public class telaCadFuncionarios extends javax.swing.JFrame {
             .addGroup(painelTituloLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitulo)
-                .addGap(161, 161, 161)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
         painelTituloLayout.setVerticalGroup(
             painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
